@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Author extends Model
+class ImageChapter extends Model
 {
     use HasFactory;
+
 
     /**
      * The attributes that are mass assignable.
@@ -15,20 +16,22 @@ class Author extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'img_src',
+        'number',
     ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
     protected $hidden = [
-        'author_id',
+        'img_cha_id',
+        'chapter_id',
     ];
 
-    public function mangas()
+    public function chapter()
     {
-        return $this->hasMany(Manga::class);
+        return $this->belongsTo(Chapter::class);
     }
-
 }
